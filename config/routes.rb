@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registration#new'
   end
   root to: 'users#index'
-  resources 'users', only: [:index, :show, :new, :edit, :edit, :update, :destroy]
+  resources 'users' do
+  end
+  resources 'user', only: [:show] do
+    resources 'plans', only: [:show, :create, :edit, :update]
+  end
 end
