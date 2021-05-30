@@ -1,2 +1,10 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+<p><strong>name: </strong><%= @user.name %></p>
+<p><strong>short_introduction: </strong><%= @user.short_introduction %></p>
+<p><strong>introduction: </strong><%= @user.introduction %></p>
+<ul class="users_plan">
+    <% @user.plans.each do |plan| %>
+        <li><%= plan.plan_name %></li>
+    <% end %>
+</ul>
