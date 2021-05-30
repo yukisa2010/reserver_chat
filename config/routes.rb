@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    resources :users, only: [:show, :edit]
+  end
+  namespace :admin do
+    resources :plans, only: [:show, :edit]
+  end
   devise_for :users
   devise_scope :user do
     delete 'logout', to: 'devise/sessions#destroy'
