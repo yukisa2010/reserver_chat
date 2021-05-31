@@ -9,6 +9,11 @@ class PlansController < ApplicationController
   end
 
   def show
+    @user = User.find_by(params[:user_id])
+    @plan = @user.plans.find(params[:id])
+    if @user == current_user
+      redirect_to admin_user_plan_path(@user, @plan)
+    end
   end
 
   def edit

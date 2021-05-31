@@ -3,6 +3,11 @@ class Admin::PlansController < ApplicationController
   protect_from_forgery :except => [:create]
 
   def show
+    @user = User.find(params[:user_id])
+    @plan = @user.plans.find(params[:id])
+    if @user != current_user
+      redirect_to user_plan_path(@user, @plan)
+    end
   end
 
   def new
