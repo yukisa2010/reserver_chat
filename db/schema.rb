@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_30_085525) do
+ActiveRecord::Schema.define(version: 2021_05_31_131506) do
 
   create_table "events", force: :cascade do |t|
     t.integer "plan_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_085525) do
     t.datetime "scheduled_datetime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
   end
 
   create_table "plans", force: :cascade do |t|

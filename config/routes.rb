@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:show, :edit] do
+      resources :events, only: [:index]
       resources :plans
       resources :plans, only: [:show] do
         resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
