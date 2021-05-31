@@ -1,0 +1,16 @@
+<h1>Admin::Events#new</h1>
+<p>Find me in app/views/admin/events/edit.html.erb</p>
+<%= form_with model: @event, scope: :event, url: admin_user_plan_events_path(current_user, @plan), method: :POST do |f| %>
+    <div class="field">
+        <%= f.label '日付：' %>
+        <%= f.select :year, (@time.year..@time.since(10.years).year).to_a, { selected: Time.now.year } %>
+        <%= f.select :month, (1..12).to_a, { selected: Time.now.month } %>
+        <%= f.select :day, (1..31).to_a, { selected: Time.now.day } %>　
+        <%= f.label '時刻：' %>
+        <%= f.select :hour, (8..24).to_a, { selected: Time.now.hour } %>：
+        <%= f.select :minute, [0, 15, 30, 45] %>
+    </div>
+    <div class="field">
+        <%= f.submit '新規作成' %>
+    </div>
+<% end %>
