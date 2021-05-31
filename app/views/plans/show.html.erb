@@ -2,3 +2,19 @@
 <p>Find me in app/views/plans/show.html.erb</p>
 <h2><strong>plan name: </strong><%= @plan.plan_name %></h2>
 <p><strong>description: </strong><%= @plan.description %></p>
+<br/>
+<h3>予約可能日程一覧</h3>
+<%= form_with model: @plan.events.new, url: user_plan_events_path(@user, @plan), 
+        method: :patch do |f| %>
+    <ul>
+        <% @plan.events.each do |event| %>
+            <li>
+                <label>
+                    <%= f.radio_button :id, event.id %>
+                    <%= event.scheduled_datetime %>
+                </label>
+            </li>
+        <% end %>
+    </ul>
+    <%= f.submit "Reserve" %>
+<% end %>

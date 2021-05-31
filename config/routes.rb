@@ -16,9 +16,14 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registration#new'
   end
   root to: 'users#index'
-  resources 'users' do
+  resources :users do
   end
-  resources 'user', only: [:show] do
-    resources 'plans', only: [:show, :create, :edit, :update]
+  resources :users, only: [:show] do
+    get 'events', to: 'events#index'
+    resources :plans, only: [:show, :create, :edit, :update] do
+      resources :events, only: [:index]
+      patch 'events', to: 'events#update'
+    end
   end
+
 end

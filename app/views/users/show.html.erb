@@ -6,7 +6,7 @@
 <ul class="users_plan">
     <% @user.plans.each do |plan| %>
         <li>
-            <%= link_to plan.plan_name, admin_user_plan_path(@user, plan) %> | 
+            <%= link_to plan.plan_name, user_plan_path(@user, plan) %> | 
         </li>
     <% end %>
 </ul>
