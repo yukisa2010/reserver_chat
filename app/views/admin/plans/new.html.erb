@@ -1,0 +1,14 @@
+<h1>Admin::Plans#new</h1>
+<%= form_with model: @plan, scope: :plan, url: admin_user_plans_path(current_user), method: :create do |f| %>
+    <div class="field">
+        <%= f.label :plan_name %>
+        <%= f.text_field :plan_name %>
+    </div>
+    <div class="field">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+    <div class="field">
+        <%= f.submit "Create" %>
+    </div>
+<% end %>

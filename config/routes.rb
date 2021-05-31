@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :users, only: [:show, :edit]
-  end
-  namespace :admin do
-    resources :plans, only: [:show, :edit]
+    resources :users, only: [:show, :edit] do
+      resources :plans
+    end
   end
   devise_for :users
   devise_scope :user do
