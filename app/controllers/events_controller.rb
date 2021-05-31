@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  def update
+
+  def reserve
     event = Event.find_by(event_params)
     event.participant_id = current_user.id
     if event.save

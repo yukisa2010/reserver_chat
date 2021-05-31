@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:show, :edit] do
-      resources :events, only: [:index]
+      resources :events, only: [:index, :show] do
+        patch :accept, to: 'events#accept'
+        delete :refuse, to: 'events#refuse'
+      end
       resources :plans
       resources :plans, only: [:show] do
         resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
     get 'events', to: 'events#index'
     resources :plans, only: [:show, :create, :edit, :update] do
       resources :events, only: [:index]
-      patch 'events', to: 'events#update'
+      patch 'events', to: 'events#reserve'
     end
   end
 

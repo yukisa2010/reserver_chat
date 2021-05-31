@@ -1,15 +1,11 @@
 class Admin::EventsController < ApplicationController
-  def index
-    @events = Event.where(organizer_id: current_user.id)
-  end
-  def show
-  end
 
   def new
     @event = Event.new
     @time = Time.now
     @plan = current_user.plans.find(params[:plan_id])
   end
+
   def create
     plan = current_user.plans.find(params[:plan_id])
     @time = create_datetime(datetime_params)
@@ -22,10 +18,21 @@ class Admin::EventsController < ApplicationController
     end
   end
 
-  def edit
+  def index
+    @events = Event.where(organizer_id: current_user.id)
   end
 
-  def update
+
+  def accept
+    event = Event.find(params[:event_id])
+    event.accepted!
+    redirect_to request.referrer, notice: 'accepted event'
+  end
+
+  def refuse
+    event = Event.find(params[:event_id])
+    event.not_offerred!
+    redirect_to request.referrer, notice: 'refused event'
   end
 
   private
