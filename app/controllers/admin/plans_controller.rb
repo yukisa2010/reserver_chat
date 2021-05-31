@@ -25,9 +25,17 @@ class Admin::PlansController < ApplicationController
   end
 
   def edit
+    @plan = current_user.plans.find(params[:id])
   end
 
   def update
+    @plan = current_user.plans.find(params[:id])
+    if @plan.update(plan_params)
+      redirect_to admin_user_plan_path(current_user, @plan), notice: 'Success!'
+    else
+      flash.now[:alert] = @plan.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy

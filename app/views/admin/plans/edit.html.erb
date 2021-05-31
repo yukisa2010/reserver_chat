@@ -1,2 +1,15 @@
 <h1>Admin::Plans#edit</h1>
 <p>Find me in app/views/admin/plans/edit.html.erb</p>
+<%= form_with model: @plan, url: admin_user_plan_path(@plan, current_user), scope: :plan, method: :patch do |f| %>
+    <div class="field">
+        <%= f.label :plan_name %>
+        <%= f.text_field :plan_name %>
+    </div>
+    <div class="field">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+    <div class="field">
+        <%= f.submit :Update %>
+    </div>
+<% end %>
