@@ -1,0 +1,10 @@
+<h1>My Reserved Events</h1>
+<p>Find me in app/views/admin/events/edit.html.erb</p>
+<% @events.each do |event| %>
+    <li>
+        <%= event.scheduled_datetime %> | 
+        <%= event.participant_id %> | 
+        <%= link_to '承認', '#'%> | 
+        <%= link_to '拒否', '#'%>
+    </li>
+<% end %>

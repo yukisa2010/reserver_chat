@@ -1,4 +1,7 @@
 class Admin::EventsController < ApplicationController
+  def index
+    @events = Event.where(organizer_id: current_user.id)
+  end
   def show
   end
 
