@@ -22,6 +22,19 @@ class Admin::PlansController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
+  def destroy
+    plan = Plan.find(params[:id])
+    if plan.destroy
+      redirect_to admin_user_plan_path(current_user, plan), notice: 'Success to delete!'
+    else
+      flash.now[:alert] = 'Failed to delete'
+      render request.referer
+    end
+  end
+
   private
     def plan_params
       params.require(:plan).permit(:plan_name, :description, :user_id)

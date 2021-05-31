@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user == current_user
-      redirect_to admin_plan_path(current_user)
+      redirect_to admin_user_plan_path(current_user)
     end
   end
 
