@@ -1,7 +1,7 @@
 <h1>My Reserved Events</h1>
 <p>Find me in app/views/admin/events/edit.html.erb</p>
 <% @events.each do |event| %>
-    <li>
+    <li class=<%= event.over? ? "past" : "" %>>
         <%= event.scheduled_datetime %> (<%= event.status %>)| 
         <%= event.participant.name %> | 
         <%= link_to '承認', admin_user_event_accept_path(event.participant_id, event.id), method: :patch, data: { confirm: 'Are you sure?' } %> | 
