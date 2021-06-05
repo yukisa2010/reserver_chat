@@ -10,5 +10,5 @@
             <%= link_to '削除', admin_user_plan_path(@user, plan), method: :delete, scope: :plan, data: { confirm: 'Are you sure?' } %>
         </li>
     <% end %>
-    <%= link_to 'create new plan', new_admin_user_plan_path(@user) %>
+    <%= link_to 'create new plan', new_admin_user_plan_path(@user), {class: "button is-link"} %>
 </ul>

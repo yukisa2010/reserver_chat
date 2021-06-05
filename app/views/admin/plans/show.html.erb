@@ -8,5 +8,5 @@
     <% @plan.events.each do |event| %>
         <li><%= event.scheduled_datetime %></li>
     <% end %>
-    <%= link_to '新規スケジュール追加', new_admin_user_plan_event_path(current_user, @plan) %>
+    <%= link_to '新規スケジュール追加', new_admin_user_plan_event_path(current_user, @plan), {class: "button is-link"} %>
 </ul>
