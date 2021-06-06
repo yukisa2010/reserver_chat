@@ -1,10 +1,12 @@
-<h1>My Reserved Events</h1>
+<h1 class="title">My Reserved Events</h1>
 <p>Find me in app/views/admin/events/edit.html.erb</p>
 <% @events.each do |event| %>
-    <li class=<%= event.over? ? "past" : "" %>>
-        <%= event.scheduled_datetime %> (<%= event.status %>)| 
-        <%= event.participant.name %> | 
-        <%= link_to '承認', admin_user_event_accept_path(event.participant_id, event.id), method: :patch, data: { confirm: 'Are you sure?' } %> | 
-        <%= link_to '拒否', admin_user_event_refuse_path(event.participant_id, event.id), method: :delete, data: { confirm: 'Are you sure?' }  %>
-    </li>
+    <% if event.participant_id %>
+        <li class=<%= event.over? ? "past" : "" %>>
+            <%= event.scheduled_datetime %> (<%= event.status %>)| 
+            <%= event.participant&.name %> | 
+            <%= link_to '承認', admin_user_event_accept_path(event.participant_id, event.id), method: :patch, data: { confirm: 'Are you sure?' } %> | 
+            <%= link_to '拒否', admin_user_event_refuse_path(event.participant_id, event.id), method: :delete, data: { confirm: 'Are you sure?' }  %>
+        </li>
+    <% end %>
 <% end %>
