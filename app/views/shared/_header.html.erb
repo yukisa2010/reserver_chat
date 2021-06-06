@@ -1,0 +1,21 @@
+    <nav class="navbar">
+      <div class="navbar-brand"></div>
+
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <%= link_to '一覧', root_path, class:"navbar-item" %>
+          <% if user_signed_in? %>
+            <%= link_to "#{current_user.name} (プラン一覧）", admin_user_path(current_user), class:"navbar-item" %>
+            <%= link_to 'My Reserved Events', admin_user_events_path(current_user), class:"navbar-item" %>
+            <%= link_to 'My Applied Reservations', user_events_path(current_user), class:"navbar-item" %>
+            <div class="navbar-end">
+              <%= link_to 'log out', logout_path, method: :delete, class:"navbar-item logout button" %>
+            </div>
+          <% else %>
+            <div class="navbar-end">
+              <%= link_to 'sign in', signin_path, class:"navbar-item button is-lighter" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </nav>

@@ -2,31 +2,12 @@
 <html>
   <head>
     <title>ReserverChat</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <%= render "layouts/head"%>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <nav class="breadcrumb">
-      <ul>
-        <li><%= link_to '一覧', root_path %></li>
-        <% if user_signed_in? %>
-          <li><%= link_to "#{current_user.name} (プラン一覧）", admin_user_path(current_user) %></li>
-          <li><%= link_to 'My Reserved Events', admin_user_events_path(current_user) %></li>
-          <li><%= link_to 'My Applied Reservations', user_events_path(current_user) %></li>
-          <li class="logout"><%= link_to 'log out', logout_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'sign in', signin_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+      <%= render 'shared/errors' %>
+      <%= render 'shared/header' %>
       <%= yield %>
   </body>
 </html>

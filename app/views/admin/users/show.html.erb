@@ -1,14 +1,22 @@
-<h1>My Plans</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
-<p><strong>name: </strong><%= @user.name %></p>
-<p><strong>short_introduction: </strong><%= @user.short_introduction %></p>
-<p><strong>introduction: </strong><%= @user.introduction %></p>
-<ul class="users_plan">
-    <% @user.plans.each do |plan| %>
-        <li>
-            <%= link_to plan.plan_name, admin_user_plan_path(@user, plan) %> | 
-            <%= link_to '削除', admin_user_plan_path(@user, plan), method: :delete, scope: :plan, data: { confirm: 'Are you sure?' } %>
-        </li>
-    <% end %>
-    <%= link_to 'create new plan', new_admin_user_plan_path(@user), {class: "button is-link"} %>
-</ul>
+<div class="content is-3">
+    <h2 class="title">User Profile</h2>
+    <ul>
+        <li><strong>name: </strong><%= @user.name %> <%= link_to "Edit User", edit_admin_user_path(@user), {class: "button is-primary is-small"} %></li>
+        <li><strong>short_introduction: </strong><%= @user.short_introduction %></li>
+        <li><strong>introduction: </strong><%= @user.introduction %></li>
+    </ul>
+</div>
+
+<div class="content">
+    <h4 class="subtitle is-4">My Plans</h4>
+    <ul class="users_plan">
+        <% @user.plans.each do |plan| %>
+            <li>
+                <%= plan.plan_name %> | 
+                <%= link_to "詳細", admin_user_plan_path(@user, plan) %> | 
+                <%= link_to '削除', admin_user_plan_path(@user, plan), method: :delete, scope: :plan, data: { confirm: 'Are you sure?' } %>
+            </li>
+        <% end %>
+        <%= link_to 'create new plan', new_admin_user_plan_path(@user), {class: "button is-link"} %>
+    </ul>
+</div>
