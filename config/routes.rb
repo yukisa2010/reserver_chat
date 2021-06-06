@@ -20,10 +20,10 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registration#new'
   end
   root to: 'users#index'
-  resources :users do
-  end
   resources :users, only: [:show] do
-    get 'events', to: 'events#index'
+    resources :events, only: [:index, :show] do
+      resources :chats, only: [:index, :create]
+    end
     resources :plans, only: [:show, :create, :edit, :update] do
       resources :events, only: [:index]
       patch 'events', to: 'events#reserve'

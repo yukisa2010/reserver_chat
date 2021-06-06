@@ -15,6 +15,9 @@ class EventsController < ApplicationController
     @events = Event.where(participant_id: current_user.id)
   end
 
+  def show
+  end
+
   private
   def event_params
     params.require(:event).permit(:id)

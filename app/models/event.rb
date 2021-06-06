@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     belongs_to :plan
+    has_many :chats
     enum status: { not_offerred: 0, accepted: 1 }
 
     def participant

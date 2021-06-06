@@ -4,7 +4,8 @@
     <% @events.each do |event| %>
         <li class=<%= event.over? ? "past" : "" %>>
             <%= event.scheduled_datetime %> (<%= event.accepted? ? 'accepted' : 'not accepted'%>) | 
-            <strong><%= event.plan.plan_name %></strong>
+            <strong><%= event.plan.plan_name %></strong> |
+            <%= link_to 'Chat', user_event_chats_path(current_user, event), class: 'button is-info is-small' %>
         </li>
     <% end %>
 </ul>
