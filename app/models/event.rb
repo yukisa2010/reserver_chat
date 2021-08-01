@@ -3,11 +3,11 @@ class Event < ApplicationRecord
     enum status: { not_offerred: 0, accepted: 1 }
 
     def participant
-        User.find(self.participant_id)
+        User.find_by(id: self.participant_id)
     end
 
     def organizer
-        User.find(self.organizer_id)
+        User.find_by(id: self.organizer_id)
     end
 
     def over?
